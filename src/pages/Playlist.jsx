@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, Avatar } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import SongTable from '../components/SongTable/SongTable';
-import { getAverageColor } from '../utils/colorUtils'; // Import your color utility function
+import { getAverageColor } from '../utils/colorUtils'; 
 
 const Playlist = ({ spotifyApi, token }) => {
   const [playlistInfo, setPlaylistInfo] = useState();

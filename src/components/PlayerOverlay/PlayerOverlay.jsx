@@ -1,29 +1,49 @@
+import React from 'react';
 import { Box, Typography, Grid, IconButton, Container } from '@mui/material';
 import PlayerControls from '../PlayerControls/PlayerControls';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { getAverageColor, darkShades } from '../../utils/colorUtils'; // Import your color utility functions
 
 const PlayerOverlay = ({ progress, is_paused, duration, player, playerOverlayIsOpen, closeOverlay, current_track }) => {
-	return (
-		<Box
-			id="PlayerOverlay"
-			sx={{
-				width: '100%',
-				height: 'calc(100vh - 75px)',
-				bgcolor: 'background.paper',
-				display: { xs: 'block', md: 'none' },
-				position: 'fixed',
-				top: 0,
-				left: 0,
-				transition: 'all 0.3s',
-				transform: playerOverlayIsOpen ? 'translateY(0)' : 'translateY(100vh)'
-			}}
-		>
-			<Container
-				sx={{
-					height: '100%',
-					background: 'linear-gradient(0deg, #121212 0%, #FFFFFF50 100%);'
-				}}
-			>
+    const [backgroundColor, setBackgroundColor] = React.useState(''); // State to hold the background color
+
+    React.useEffect(() => {
+        // When the current track changes, get the average color of its image
+        if (current_track?.album.images[0]?.url) {
+            getAverageColor(current_track.album.images[0].url)
+                .then(avgColor => {
+                    setBackgroundColor(avgColor);
+                })
+                .catch(error => {
+                    console.error('Error getting average color:', error);
+                    // If there's an error, fallback to a default color
+                    setBackgroundColor(darkShades.gray);
+                });
+        }
+    }, [current_track]);
+
+    return (
+        <Box
+            id="PlayerOverlay"
+            sx={{
+                width: '100%',
+                height: 'calc(100vh - 75px)',
+                bgcolor: '#121212',
+                display: { xs: 'block', md: 'none' },
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                transition: 'all 0.3s',
+                transform: playerOverlayIsOpen ? 'translateY(0)' : 'translateY(100vh)'
+            }}
+        >
+            <Container
+                sx={{
+                    height: '100%',
+					background: `linear-gradient(180deg, ${backgroundColor || darkShades.gray} 0%, rgba(18,18,18,0.6) 100%)`
+                }}
+            >
+
 				<Grid container direction={'column'} justifyContent="space-between" sx={{ height: '100%' }}>
 					<Grid
 						item
