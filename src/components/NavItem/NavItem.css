@@ -1,0 +1,7 @@
+.NavLink div{
+	color: #b3b3b3;
+}
+
+.NavLink.active div{
+	color: #ffffff !important;
+}
