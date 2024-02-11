@@ -13,7 +13,6 @@ const Home = () => {
 				gap: 5
 			}}
 		>
-			{/* Byt till en bild om dig själv */}
 			<img src="/nabil-logo.png" style={{ maxHeight: '100%', maxWidth: '100%' }} alt="nabil-logo" />
 			<Button
 				size="large"

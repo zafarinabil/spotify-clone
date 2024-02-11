@@ -2,13 +2,12 @@ import React from 'react';
 import { Box, Typography, Grid, IconButton, Container } from '@mui/material';
 import PlayerControls from '../PlayerControls/PlayerControls';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { getAverageColor, darkShades } from '../../utils/colorUtils'; // Import your color utility functions
+import { getAverageColor, darkShades } from '../../utils/colorUtils'; 
 
 const PlayerOverlay = ({ progress, is_paused, duration, player, playerOverlayIsOpen, closeOverlay, current_track }) => {
-    const [backgroundColor, setBackgroundColor] = React.useState(''); // State to hold the background color
+    const [backgroundColor, setBackgroundColor] = React.useState(''); 
 
     React.useEffect(() => {
-        // When the current track changes, get the average color of its image
         if (current_track?.album.images[0]?.url) {
             getAverageColor(current_track.album.images[0].url)
                 .then(avgColor => {
@@ -16,7 +15,6 @@ const PlayerOverlay = ({ progress, is_paused, duration, player, playerOverlayIsO
                 })
                 .catch(error => {
                     console.error('Error getting average color:', error);
-                    // If there's an error, fallback to a default color
                     setBackgroundColor(darkShades.gray);
                 });
         }

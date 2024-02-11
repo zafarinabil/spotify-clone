@@ -3,7 +3,6 @@ import { Box, Button } from '@mui/material';
 import { accessUrl } from '../config/config';
 
 const Login = () => {
-	/* Using ref to access API login, with redirect URI declared in config */
 	return (
 		<Box
 			sx={{

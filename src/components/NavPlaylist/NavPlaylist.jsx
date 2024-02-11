@@ -9,7 +9,7 @@ const NavPlaylist = ({ name, id, images, loading, spotifyApi }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const playlistDetail = await spotifyApi.getPlaylist(id); // Assuming you have access to spotifyApi
+        const playlistDetail = await spotifyApi.getPlaylist(id); 
         setPlaylistInfo({
           image: playlistDetail.body.images[0].url,
         });

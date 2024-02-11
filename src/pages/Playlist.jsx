@@ -10,7 +10,6 @@ const Playlist = ({ spotifyApi, token }) => {
   const [status, setStatus] = useState({ isLoading: false, isError: null });
   const { id } = useParams();
 
-  // Define the formatSongData function
   const formatSongData = (songs) => {
     return songs.map((song, i) => {
       const { track } = song;
@@ -47,8 +46,7 @@ const Playlist = ({ spotifyApi, token }) => {
     if (playlistInfo && playlistInfo.image) {
       const fetchColor = async () => {
         try {
-          const color = await getAverageColor(playlistInfo.image); // Assuming getAverageColor returns a promise resolving to a color
-          // Set the background gradient based on the dominant color
+          const color = await getAverageColor(playlistInfo.image);
           document.getElementById('Playlist__page').style.background = `linear-gradient(180deg, ${color} 0%, rgba(0,0,0,0.6) 60%)`;
         } catch (error) {
           console.error('Error fetching playlist image color:', error);
