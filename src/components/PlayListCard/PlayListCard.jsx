@@ -39,7 +39,7 @@ const PlayListCard = ({ name, images, id, loading }) => {
                     transition: 'all 0.3s',
                     ':hover .play-button': {
                         opacity: 1,
-                        bottom: '120px',
+                        bottom: '80px',
                         right: '30px'
                     }
                 }}
@@ -67,8 +67,6 @@ const PlayListCard = ({ name, images, id, loading }) => {
                             borderRadius: '50%',
                             border: 0,
                             position: 'absolute',
-                            bottom: 0,
-                            right: '10px',
                             transition: 'all 0.3s',
                             opacity: 0,
                             bottom: '110px',
