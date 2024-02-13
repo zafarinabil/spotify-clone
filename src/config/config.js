@@ -1,8 +1,8 @@
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 export const clientId = import.meta.env.VITE_CLIENT_ID;
 export const liveURL = import.meta.env.VITE_CLIENT_SECRET;
-export const devURL = 'https://spotify-clone-geve.vercel.app/';
-export const redirectURL = import.meta.env.PROD ? liveURL : devURL;
+export const devURL = 'https://nabil-spotify.vercel.app/';
+export const redirectURL = 'https://nabil-spotify.vercel.app/';
 export const scopes = [
 	'playlist-read-collaborative',
 	'playlist-modify-public',
